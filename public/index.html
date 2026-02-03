@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RAG Playground</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="panel">
+        <h1>RAG Playground</h1>
+        <p>Paste a document, ingest it, then ask questions.</p>
+        <label class="label" for="docTitle">Document Title</label>
+        <input id="docTitle" type="text" placeholder="My Doc" />
+        <label class="label" for="docText">Document Text</label>
+        <textarea id="docText" rows="8" placeholder="Paste text here..."></textarea>
+        <label class="label" for="docFile">Or upload a .txt or .pdf file</label>
+        <input id="docFile" type="file" accept=".txt,.pdf" />
+        <label class="label" for="chunkSize">Chunk Size: <span id="chunkSizeValue">1000</span></label>
+        <input id="chunkSize" type="range" min="200" max="2000" step="100" value="1000" />
+        <div class="row">
+          <button id="ingestBtn">Ingest</button>
+          <button id="sampleBtn" class="secondary">Load Sample</button>
+          <button id="clearBtn" class="secondary danger">Clear All</button>
+          <button id="warmupBtn" class="secondary">Warm Model</button>
+        </div>
+        <p id="ingestStatus" class="status"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Ask a Question</h2>
+        <label class="label" for="query">Question</label>
+        <input id="query" type="text" placeholder="What does the doc say about..." />
+        <button id="askBtn">Ask</button>
+        <p id="queryStatus" class="status"></p>
+        <div class="answer">
+          <h3>Answer</h3>
+          <pre id="answerText"></pre>
+        </div>
+        <div class="extracted">
+          <h3>Extracted Text (Preview)</h3>
+          <pre id="extractedText"></pre>
+        </div>
+        <div class="sources">
+          <h3>Sources</h3>
+          <div id="sourcesList"></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
